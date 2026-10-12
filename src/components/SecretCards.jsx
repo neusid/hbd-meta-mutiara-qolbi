@@ -1,43 +1,43 @@
 import React, { useState } from 'react';
-import { Gift, Sparkles, Heart, Star, CheckCircle2 } from 'lucide-react';
+import { Gift, Sparkles, Heart, CheckCircle2 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { playCelebrationChime, playSoftPop } from '../utils/audio';
 
-const SECRET_WISHES = [
+const SECRET_WISHES_FROM_MALIK = [
   {
     id: 1,
-    badge: 'Pesan 01',
-    title: 'Keberanian & Potensi Diri',
-    hiddenIcon: '🎁',
-    revealedTitle: 'Kamu Mampu Melampaui Apapun! 🌟',
-    revealedMessage: 'Jangan pernah ragukan kapasitas dirimu. Segala impian besar yang sedang kamu simpan dalam hati di usia 20 ini, kamu punya daya luar biasa untuk mewujudkannya satu per satu.',
+    badge: 'Pesan 01 • Dari Malik',
+    title: 'Rasa Syukur & Apresiasi',
+    hiddenIcon: '💎',
+    revealedTitle: 'Kamu Begitu Berharga Bagi Malik 🌟',
+    revealedMessage: 'Kehadiranmu selalu membawa ketenangan dan warna yang indah. Terima kasih sudah tumbuh menjadi perempuan yang sekuat karang namun selembut mutiara. Aku sangat bersyukur memilikimu dalam hidupku.',
     accent: 'border-pink-300 text-pink-600 bg-pink-50',
   },
   {
     id: 2,
-    badge: 'Pesan 02',
-    title: 'Kebahagiaan Tanpa Syarat',
-    hiddenIcon: '💖',
-    revealedTitle: 'Berhak Bahagia Setiap Hari 🌸',
-    revealedMessage: 'Bahagia tidak harus menunggu hal besar terjadi. Nikmati setiap cangkir teh, setiap tawa kecil, dan ketahuilah bahwa senyumanmu adalah hal paling menawan yang mencerahkan harimu.',
+    badge: 'Pesan 02 • Dari Malik',
+    title: 'Dukungan Tanpa Syarat',
+    hiddenIcon: '🛡️',
+    revealedTitle: 'Malik Selalu Ada Untukmu 🌸',
+    revealedMessage: 'Kapan pun kamu merasa lelah, ragu, atau butuh tempat bersandar, ingatlah bahwa kamu tidak pernah sendiri. Malik akan selalu siap mendengarkan, mendukung, dan berdiri di sisimu dalam kondisi apa pun.',
     accent: 'border-rose-300 text-rose-600 bg-rose-50',
   },
   {
     id: 3,
-    badge: 'Pesan 03',
-    title: 'Pelindung & Doa',
+    badge: 'Pesan 03 • Dari Malik',
+    title: 'Doa Senyuman Abadi',
     hiddenIcon: '✨',
-    revealedTitle: 'Dikelilingi Orang-Orang Tulus 🤍',
-    revealedMessage: 'Semoga setiap jalan yang kamu pilih senantiasa dijaga oleh semesta, didekatkan dengan orang-orang baik yang menyayangimu apa adanya, dan dijauhkan dari segala keresahan hati.',
+    revealedTitle: 'Semoga Senyummu Selalu Mekar 🤍',
+    revealedMessage: 'Doaku di setiap hari: semoga Allah SWT menjaga senyuman manis di wajahmu, menjauhkan segala keresahan di hatimu, dan menggantikan setiap lelahmu dengan rezeki dan kebahagiaan yang melimpah.',
     accent: 'border-purple-300 text-purple-600 bg-purple-50',
   },
   {
     id: 4,
-    badge: 'Pesan 04',
-    title: 'Mahkota Usia 20',
+    badge: 'Pesan 04 • Dari Malik',
+    title: 'Mahkota Usia 20 Tahun',
     hiddenIcon: '👑',
-    revealedTitle: 'The Sweetest Chapter Begins! 🎂',
-    revealedMessage: 'Dua dekade adalah tonggak emas kedewasaan. Melangkahlah dengan anggun, percaya diri, dan selalu bangga pada sosok Meta Mutiara Qolbi yang terus berkembang indah!',
+    revealedTitle: 'Langkah Baru Menuju Masa Depan 🎂',
+    revealedMessage: 'Usia 20 adalah babak baru yang penuh peluang emas. Kejar semua mimpimu dengan penuh keyakinan, Meta. Apa pun cita-cita yang kamu tuju, Malik yakin kamu pasti mampu meraihnya dengan gemilang!',
     accent: 'border-amber-300 text-amber-600 bg-amber-50',
   },
 ];
@@ -47,7 +47,6 @@ export default function SecretCards() {
 
   const handleCardClick = (id) => {
     if (openedCards[id]) {
-      // Already opened, just soft sound
       playSoftPop();
       return;
     }
@@ -55,10 +54,9 @@ export default function SecretCards() {
     playCelebrationChime();
     setOpenedCards((prev) => ({ ...prev, [id]: true }));
 
-    // Small burst of confetti
     confetti({
-      particleCount: 40,
-      spread: 60,
+      particleCount: 45,
+      spread: 65,
       origin: { y: 0.8 },
       colors: ['#f472b6', '#fb7185', '#fde047'],
     });
@@ -67,12 +65,12 @@ export default function SecretCards() {
   return (
     <div className="w-full space-y-3">
       <div className="flex items-center justify-between px-1">
-        <div>
+        <div className="text-left">
           <span className="text-[11px] font-bold uppercase tracking-wider text-rose-500">
-            Pesan Tersembunyi
+            Khusus Untuk Meta
           </span>
           <h3 className="text-base font-bold text-slate-800 font-serif-title">
-            Ketuk 4 Kartu Kejutan Untukmu 🎁
+            4 Pesan Rahasia Dari Malik 🎁
           </h3>
         </div>
         <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-rose-100 text-rose-700">
@@ -81,7 +79,7 @@ export default function SecretCards() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        {SECRET_WISHES.map((card) => {
+        {SECRET_WISHES_FROM_MALIK.map((card) => {
           const isOpened = openedCards[card.id];
 
           return (

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Heart, Sparkles, X, Check } from 'lucide-react';
+import { Mail, Heart, Sparkles, X } from 'lucide-react';
 import { playSoftPop, playCelebrationChime } from '../utils/audio';
 
 export default function SuratAmplop() {
@@ -20,7 +20,7 @@ export default function SuratAmplop() {
       {!isOpen ? (
         <div 
           onClick={toggleEnvelope}
-          className="w-full max-w-sm p-5 rounded-3xl bg-gradient-to-br from-rose-100/90 via-pink-50 to-white border border-rose-200/90 shadow-lg shadow-rose-200/40 cursor-pointer hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 relative overflow-hidden group"
+          className="w-full max-w-sm p-5 rounded-3xl bg-gradient-to-br from-rose-100/95 via-pink-50 to-white border border-rose-200/90 shadow-lg shadow-rose-200/40 cursor-pointer hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 relative overflow-hidden group"
         >
           {/* Decorative Sparkle Background */}
           <div className="absolute top-2 right-2 text-rose-300 opacity-60">
@@ -38,29 +38,29 @@ export default function SuratAmplop() {
 
             <div className="flex-1 text-left">
               <div className="flex items-center gap-1.5">
-                <span className="px-2 py-0.5 rounded-full bg-rose-200/60 text-rose-800 text-[10px] font-bold uppercase tracking-wider">
+                <span className="px-2 py-0.5 rounded-full bg-rose-200/70 text-rose-900 text-[10px] font-bold uppercase tracking-wider">
                   Surat Pribadi
                 </span>
-                <span className="text-[11px] text-rose-500 font-medium">Khusus untuk Meta</span>
+                <span className="text-[11px] text-rose-600 font-semibold">Dari Malik untuk Meta</span>
               </div>
               <h3 className="text-base font-bold text-slate-800 mt-1 font-serif-title">
-                Sebuah Surat Dari Lubuk Hati 💌
+                Sebuah Surat Dari Lubuk Hatiku 💌
               </h3>
               <p className="text-xs text-slate-500 mt-0.5">
-                Ketuk di sini untuk membuka amplop & membaca pesan...
+                Ketuk di sini untuk membaca isi pesanku untukmu...
               </p>
             </div>
           </div>
 
           {/* Bottom pulse bar */}
           <div className="mt-3 pt-3 border-t border-rose-100 flex items-center justify-between text-xs text-rose-600 font-semibold">
-            <span>Buka Surat Ulang Tahun</span>
+            <span>Buka Surat dari Malik</span>
             <span className="group-hover:translate-x-1 transition-transform">→</span>
           </div>
         </div>
       ) : (
         /* Open Letter Full View */
-        <div className="w-full max-w-sm rounded-3xl bg-white/95 border border-rose-200 shadow-2xl p-6 relative animate-fadeIn transition-all">
+        <div className="w-full max-w-sm rounded-3xl bg-white border border-rose-200 shadow-2xl p-6 relative animate-fadeIn transition-all text-left">
           {/* Close / Fold Button */}
           <button
             onClick={toggleEnvelope}
@@ -79,45 +79,47 @@ export default function SuratAmplop() {
           </div>
 
           <h3 className="text-xl font-bold text-rose-950 font-serif-title leading-snug">
-            Untuk Sang Mutiara Hati,<br />
-            <span className="text-rose-600">Meta Mutiara Qolbi ✨</span>
+            Untuk Meta Mutiara Qolbi,<br />
+            <span className="text-rose-600 font-handwriting text-2xl font-bold">Mutiara Terindah Dalam Hatiku ✨</span>
           </h3>
 
           <div className="w-12 h-0.5 bg-gradient-to-r from-rose-500 to-pink-300 my-3"></div>
 
           {/* Letter Body */}
-          <div className="space-y-3 text-xs sm:text-sm text-slate-700 leading-relaxed font-sans text-left">
+          <div className="space-y-3.5 text-xs sm:text-sm text-slate-700 leading-relaxed font-sans">
             <p>
-              <span className="font-handwriting text-2xl text-rose-600 font-bold mr-1">Halo Meta,</span>
-              Selamat menginjak usia yang ke-20 tahun!
+              <span className="font-handwriting text-2xl text-rose-600 font-bold mr-1">Hai Meta,</span>
+              Selamat ulang tahun yang ke-20 ya.
             </p>
 
             <p>
-              Dua puluh tahun yang lalu, pada tanggal <strong className="text-rose-800">13 Oktober 2006</strong>, semesta menyambut lahirnya seseorang yang kelak tumbuh dengan nama yang begitu anggun dan berharga: <em>Mutiara Qolbi</em> — mutiara yang menghuni relung hati.
+              Dua puluh tahun yang lalu, tepat di tanggal <strong className="text-rose-800">13 Oktober 2006</strong>, kamu hadir ke dunia ini membawa nama yang begitu anggun: <em>Meta Mutiara Qolbi</em>. Dan bagiku, namamu bukan sekadar susunan kata yang indah, tapi cerminan nyata dari sosokmu — seorang perempuan yang berharga, berhati tulus, dan menenangkan hati siapa pun yang ada di dekatmu.
             </p>
 
             <p>
-              Mutiara di lautan tidak tercipta dalam semalam. Ia ditempa oleh waktu, butiran demi butiran pasir yang diselimuti kelembutan, hingga akhirnya memancarkan kilau murni yang tak ternilai harganya. Begitu pula perjalanan hidupmu hingga hari ini: setiap senyuman, tawa, bahkan lelah yang pernah kau lalui telah membentukmu menjadi sosok perempuan yang kuat, memesona, dan berharga.
+              Aku ingin kamu tahu betapa bersyukurnya aku bisa mengenalmu dan melihatmu tumbuh hingga sejauh ini. Perjalanan menuju usia 20 tentu tidak selalu mudah, tapi kamu selalu mampu melewatinya dengan ketabahan dan senyum manismu yang luar biasa. Aku sangat bangga padamu, Meta.
             </p>
 
-            <div className="p-3.5 rounded-2xl bg-rose-50/80 border border-rose-100 italic text-rose-900 font-serif-title text-xs leading-normal">
-              "Semoga di usia ke-20 ini, langkah kakimu selalu dipenuhi kemudahan, hatimu senantiasa dipeluk ketenangan, air matamu selalu berganti senyum kemenangan, dan setiap doamu didekap hangat oleh ridho Tuhan."
+            <div className="p-3.5 rounded-2xl bg-rose-50/90 border border-rose-200 italic text-rose-900 font-serif-title text-xs leading-relaxed">
+              "Di usia ke-20 ini, doaku untukmu sederhana namun teramat dalam: semoga kamu selalu sehat, hatimu selalu dipeluk rasa damai dan bahagia, langkahmu dimudahkan dalam menggapai semua cita-cita, dan kamu tidak pernah merasa sendirian dalam menghadapi apa pun."
             </div>
 
             <p>
-              Terima kasih telah hadir dan menebarkan kehangatan di dunia ini. Jangan pernah merasa sendiri, karena kebaikan yang selalu kamu tabur akan selalu kembali kepadamu dalam bentuk berkah yang berlipat ganda.
+              Apapun impian yang sedang kamu perjuangkan saat ini, percayalah bahwa kamu punya kemampuan besar untuk mewujudkannya. Jangan pernah ragu pada nilaimu sendiri, karena bagiku, kamu selalu istimewa dan tak tergantikan.
             </p>
 
-            <p className="pt-2 font-medium text-slate-800">
-              Selamat ulang tahun, Meta Mutiara Qolbi. Tetaplah menjadi mutiara yang bersinar dengan caramu sendiri! 🤍✨
+            <p className="font-medium text-slate-800">
+              Selamat memasuki babak baru di usia 20 tahun, Meta. Tetaplah menjadi mutiara hatiku yang selalu bersinar lembut dan memesona. 🤍
             </p>
           </div>
 
-          {/* Signoff */}
-          <div className="mt-5 pt-3 border-t border-rose-100 flex items-center justify-between text-xs text-rose-700">
-            <div className="flex items-center gap-1.5">
-              <Heart className="w-4 h-4 text-rose-500 fill-rose-500" />
-              <span className="font-semibold">Dengan Doa Tulus & Sayang</span>
+          {/* Signoff Eksklusif dari Malik */}
+          <div className="mt-6 pt-4 border-t border-rose-100 flex items-center justify-between">
+            <div className="text-left">
+              <p className="text-[11px] text-slate-500 font-medium">Dengan segenap rasa & doa tulus,</p>
+              <p className="text-base font-bold text-rose-800 font-handwriting text-xl">
+                Malik 💖
+              </p>
             </div>
             <button
               onClick={toggleEnvelope}

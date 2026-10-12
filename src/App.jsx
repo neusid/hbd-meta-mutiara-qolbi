@@ -3,13 +3,8 @@ import confetti from 'canvas-confetti';
 import { 
   Sparkles, 
   Heart, 
-  Cake, 
-  Calendar, 
   Crown, 
   Check, 
-  Share2, 
-  Music, 
-  Stars
 } from 'lucide-react';
 import BirthdayCake from './components/BirthdayCake';
 import SuratAmplop from './components/SuratAmplop';
@@ -18,10 +13,10 @@ import SecretCards from './components/SecretCards';
 import WishJar from './components/WishJar';
 import FloatingControls from './components/FloatingControls';
 import FloatingParticles from './components/FloatingParticles';
-import { playCelebrationChime, playSoftPop } from './utils/audio';
+import { playCelebrationChime } from './utils/audio';
 
 export default function App() {
-  const [loveCount, setLoveCount] = useState(128);
+  const [loveCount, setLoveCount] = useState(20);
   const [showSnackbar, setShowSnackbar] = useState(false);
   const [snackbarText, setSnackbarText] = useState('');
 
@@ -30,8 +25,8 @@ export default function App() {
     setLoveCount((prev) => prev + 1);
 
     confetti({
-      particleCount: 25,
-      spread: 45,
+      particleCount: 30,
+      spread: 50,
       origin: { y: 0.9 },
       colors: ['#f43f5e', '#ec4899', '#fb7185'],
     });
@@ -74,16 +69,16 @@ export default function App() {
         
         {/* Top Status Capsule */}
         <header className="flex items-center justify-between pt-1">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rose-100/80 border border-rose-200/80 shadow-xs">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rose-100/90 border border-rose-200/90 shadow-xs">
             <span className="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
             <span className="text-[11px] font-bold text-rose-800 tracking-wide">
-              13 • 10 • 2006 — Sweet 20th
+              Spesial Dari Malik • 13 - 10 - 2006
             </span>
           </div>
 
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 border border-rose-200 text-rose-600 text-[11px] font-bold shadow-xs">
             <Crown className="w-3.5 h-3.5 text-amber-500" />
-            <span>Milestone 20</span>
+            <span>Sweet 20th</span>
           </div>
         </header>
 
@@ -110,13 +105,13 @@ export default function App() {
           {/* Titles */}
           <div className="space-y-1">
             <span className="text-xs font-bold uppercase tracking-widest text-rose-500">
-              Happy Birthday To
+              Selamat Ulang Tahun Ke-20
             </span>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif-title tracking-tight leading-tight">
               Meta Mutiara Qolbi <span className="shimmer-text">✨</span>
             </h1>
             <p className="text-xs sm:text-sm text-slate-600 max-w-xs mx-auto leading-relaxed pt-1">
-              Dua dekade tumbuh menjadi pribadi yang seanggun mutiara dan sehangat sanubari. Hari ini panggungmu untuk tersenyum paling bahagia! 🌸
+              Sebuah persembahan dan untaian doa tulus dari <strong className="text-rose-700">Malik</strong> untuk sang mutiara hati di hari paling bahagianya. 🌸
             </p>
           </div>
         </section>
@@ -124,11 +119,11 @@ export default function App() {
         {/* Interactive Virtual Birthday Cake */}
         <section className="p-4 sm:p-5 rounded-3xl bg-gradient-to-b from-white via-rose-50/50 to-white border border-rose-200/80 shadow-sm text-center">
           <BirthdayCake 
-            onCandleBlown={() => triggerSnackbar('Lilin berhasil ditiup! Doamu sedang berlayar ✨')} 
+            onCandleBlown={() => triggerSnackbar('Lilin ditiup! Semoga semua doa Malik untuk Meta dikabulkan ✨')} 
           />
         </section>
 
-        {/* Heartfelt Openable Envelope Letter */}
+        {/* Heartfelt Openable Envelope Letter From Malik */}
         <section className="w-full">
           <SuratAmplop />
         </section>
@@ -138,27 +133,27 @@ export default function App() {
           <MilestoneJourney />
         </section>
 
-        {/* Secret Cards Reveal */}
+        {/* Secret Cards Reveal From Malik */}
         <section className="w-full">
           <SecretCards />
         </section>
 
-        {/* Interactive Wish Jar */}
+        {/* Exclusive Prayers From Malik */}
         <section className="w-full">
           <WishJar />
         </section>
 
-        {/* Love Shower Interactive Footer Card */}
+        {/* Love Shower Interactive Footer Card From Malik */}
         <section className="p-4 rounded-3xl bg-gradient-to-r from-rose-500 via-pink-500 to-rose-600 text-white text-center shadow-lg shadow-rose-300/50 space-y-3">
           <div className="w-10 h-10 mx-auto rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
             <Heart className="w-5 h-5 text-white fill-white animate-pulse" />
           </div>
           <div>
             <h3 className="text-sm font-bold font-serif-title">
-              Kirimkan Kasih & Pelukan Hangat 💖
+              Detak Doa & Rasa Sayang Dari Malik 💖
             </h3>
             <p className="text-xs text-rose-100 mt-0.5">
-              Sudah ada <strong className="text-white underline">{loveCount}</strong> cinta yang terkirim untuk Meta hari ini!
+              Sudah ada <strong className="text-white underline">{loveCount}</strong> tanda cinta & doa tulus yang dikirim Malik untuk Meta hari ini!
             </p>
           </div>
           <button
@@ -166,20 +161,20 @@ export default function App() {
             className="w-full py-2.5 px-4 rounded-2xl bg-white text-rose-600 font-bold text-xs shadow-md hover:bg-rose-50 active:scale-95 transition-all cursor-pointer flex items-center justify-center gap-1.5"
           >
             <Heart className="w-4 h-4 fill-rose-600 text-rose-600" />
-            <span>Kirim Pelukan & Doa (+1 Cinta)</span>
+            <span>Kirim Pelukan & Doa Dari Malik (+1 Cinta)</span>
           </button>
         </section>
 
         {/* Closing Footnote */}
         <footer className="text-center pt-2 pb-6 space-y-1">
           <p className="text-[11px] text-slate-400 font-medium">
-            Didedikasikan dengan segenap doa untuk
+            Dibuat dengan segenap cinta & doa khusus dari
           </p>
           <p className="text-xs font-bold text-rose-800 font-serif-title">
-            Meta Mutiara Qolbi • 13 - 10 - 2006
+            Malik untuk Meta Mutiara Qolbi • 13 Oktober 2006
           </p>
           <p className="text-[10px] text-slate-400">
-            Semoga harimu penuh berkah & senyuman terindah ✨
+            Semoga harimu selalu bersinar dan penuh kebahagiaan ✨
           </p>
         </footer>
 
@@ -187,7 +182,7 @@ export default function App() {
 
       {/* Floating Bottom Action Bar */}
       <FloatingControls
-        onShareNotice={() => triggerSnackbar('Tautan ucapan berhasil disalin ke clipboard! 💌')}
+        onShareNotice={() => triggerSnackbar('Tautan ucapan berhasil disalin! Kirimkan ke Meta 💌')}
       />
 
     </div>
