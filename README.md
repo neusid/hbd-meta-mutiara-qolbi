@@ -1,20 +1,15 @@
-# ✨ Happy 20th Birthday, Meta Mutiara Qolbi! 🎂💖
+# ✨ Selamat Ulang Tahun Ke-20, Meta Mutiara Qolbi! 🎂💖
 
-Aesthetic & interactive mobile-first birthday web application specially created to celebrate the 20th birthday milestone of **Meta Mutiara Qolbi** (13 Oktober 2006 — 13 Oktober 2026).
+Aplikasi web mobile view spesial perayaan ulang tahun ke-20 untuk **Meta Mutiara Qolbi** (13 Oktober 2006 — 13 Oktober 2026), dipersembahkan secara eksklusif dengan segenap doa tulus dari **Malik**.
 
 ---
 
-## 🌟 Features
+## 🌟 Fitur Utama
 
-1. **📱 Mobile-First Ergonomics:** Designed with ultra-smooth mobile viewport, touch-friendly interactions, and responsive card hierarchy.
-2. **🎂 Interactive Birthday Cake:** Virtual 3-tier cake with number 20 candle, realistic flame animation, interactive blow candle interaction with smoke physics, and celebratory confetti cannon.
-3. **💌 Sealed Love Letter (Surat Amplop):** Interactive wax seal envelope that unfolds a heartfelt letter celebrating Meta's life, virtues, and milestone.
-4. **🏆 20 Years Milestone & Philosophy:** 4-quadrant metrics honoring 20 years, 240 months, 7.305+ days, plus deep philosophical meaning of *Meta Mutiara Qolbi*.
-5. **🎁 4 Secret Scratch Cards:** Interactive flip reveal cards sharing blessings, empowerment, and joy.
-6. **🏺 Toples Harapan (Interactive Wish Jar):** Real-time interactive prayer board with local storage persistence and celebration feedback.
-7. **🎶 Web Audio Music Box:** Built-in synthesizer playing a delicate music-box melody of *Happy Birthday* and celebratory sparkling chimes without external audio dependencies.
-8. **💖 Love Hug Counter:** Interactive tap-to-send love counter with floating hearts.
-9. **🚀 Auto GitHub Pages Deployment:** Fully automated CI/CD pipeline with GitHub Actions.
+1. **📱 Desain Ergonomis Mobile View:** Tampilan elegan yang dioptimasi khusus untuk layar smartphone.
+2. **🎂 Animasi Kue Ulang Tahun Interaktif:** Kue 3-tier dengan lilin angka 20 berapi dinamis, interaksi tiup lilin dengan efek asap dan letupan konfeti.
+3. **💌 Paragraf Ucapan & Doa Tulus:** Untaian kata mendalam dan doa penuh ketulusan dari Malik khusus untuk Meta Mutiara Qolbi.
+4. **🎶 Web Audio Music Box:** Melodi instrumen *Happy Birthday* lembut bawaan Web Audio API (dapat diputar/dijeda sesuka hati).
 
 ---
 
@@ -29,19 +24,4 @@ Aesthetic & interactive mobile-first birthday web application specially created 
 
 ---
 
-## 🚀 Local Development
-
-```bash
-# Clone the repository
-git clone https://github.com/Malikibrahim10203/hbd-meta-mutiara-qolbi.git
-
-# Install dependencies
-npm install
-
-# Run development server
-npm run dev
-```
-
----
-
-*Dibuat dengan cinta dan doa terbaik untuk Meta Mutiara Qolbi.* ✨
+*Dibuat khusus dengan segenap cinta dan doa dari Malik untuk Meta Mutiara Qolbi.* ✨

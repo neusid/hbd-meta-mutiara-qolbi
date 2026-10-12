@@ -1,189 +1,174 @@
 import React, { useState } from 'react';
 import confetti from 'canvas-confetti';
-import { 
-  Sparkles, 
-  Heart, 
-  Crown, 
-  Check, 
-} from 'lucide-react';
+import { Sparkles, Heart, Crown, Check, Volume2, VolumeX } from 'lucide-react';
 import BirthdayCake from './components/BirthdayCake';
-import SuratAmplop from './components/SuratAmplop';
-import MilestoneJourney from './components/MilestoneJourney';
-import SecretCards from './components/SecretCards';
-import WishJar from './components/WishJar';
-import FloatingControls from './components/FloatingControls';
 import FloatingParticles from './components/FloatingParticles';
-import { playCelebrationChime } from './utils/audio';
+import { toggleMusicBoxMelody, playCelebrationChime } from './utils/audio';
 
 export default function App() {
-  const [loveCount, setLoveCount] = useState(20);
-  const [showSnackbar, setShowSnackbar] = useState(false);
-  const [snackbarText, setSnackbarText] = useState('');
+  const [isPlayingMusic, setIsPlayingMusic] = useState(false);
+  const [candleBlown, setCandleBlown] = useState(false);
 
-  const handleSendLove = () => {
+  const handleToggleMusic = () => {
+    const newState = toggleMusicBoxMelody((active) => {
+      setIsPlayingMusic(active);
+    });
+    setIsPlayingMusic(newState);
+  };
+
+  const handleCandleBlown = () => {
+    setCandleBlown(true);
     playCelebrationChime();
-    setLoveCount((prev) => prev + 1);
-
     confetti({
-      particleCount: 30,
-      spread: 50,
-      origin: { y: 0.9 },
-      colors: ['#f43f5e', '#ec4899', '#fb7185'],
+      particleCount: 100,
+      spread: 80,
+      origin: { y: 0.6 },
+      colors: ['#f472b6', '#fb7185', '#ec4899', '#fde047', '#a855f7'],
     });
   };
 
-  const triggerSnackbar = (msg) => {
-    setSnackbarText(msg);
-    setShowSnackbar(true);
-    setTimeout(() => setShowSnackbar(false), 3200);
-  };
-
   return (
-    <div className="min-h-screen bg-slate-900/90 sm:bg-slate-950 flex justify-center items-start sm:py-6 selection:bg-rose-200 selection:text-rose-900 relative overflow-x-hidden">
+    <div className="min-h-screen bg-slate-900/90 sm:bg-slate-950 flex justify-center items-start sm:py-8 selection:bg-rose-200 selection:text-rose-900 relative overflow-x-hidden">
       
       {/* Background Ambience on Desktop */}
-      <div className="fixed inset-0 pointer-events-none opacity-40">
+      <div className="fixed inset-0 pointer-events-none opacity-30">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-rose-500/20 rounded-full blur-3xl"></div>
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl"></div>
       </div>
 
-      {/* Floating Petals/Sparkles */}
+      {/* Floating Petals / Sparkles */}
       <FloatingParticles />
 
-      {/* Top Floating Snackbar (Gojek / Neus Design Standard) */}
-      {showSnackbar && (
-        <div className="fixed top-5 inset-x-0 z-50 flex justify-center px-4 animate-fadeIn pointer-events-none">
-          <div className="inline-flex items-center gap-2.5 px-5 py-3 rounded-2xl bg-emerald-600 text-white shadow-xl shadow-emerald-900/40 border border-emerald-400/40 backdrop-blur-md pointer-events-auto">
-            <span className="w-5 h-5 rounded-full bg-white/20 flex items-center justify-center">
-              <Check className="w-3.5 h-3.5 text-white" />
-            </span>
-            <span className="text-xs font-semibold tracking-wide">
-              {snackbarText}
-            </span>
-          </div>
-        </div>
-      )}
-
       {/* Mobile Frame Container */}
-      <main className="w-full max-w-md min-h-screen sm:min-h-[920px] bg-gradient-to-b from-rose-50 via-white to-pink-50/60 sm:rounded-3xl sm:shadow-2xl sm:border border-rose-200/60 relative flex flex-col pb-28 pt-4 px-4 sm:px-5 space-y-6 z-10">
+      <main className="w-full max-w-md min-h-screen sm:min-h-[900px] bg-gradient-to-b from-rose-50 via-white to-pink-50/70 sm:rounded-3xl sm:shadow-2xl sm:border border-rose-200/70 relative flex flex-col pt-5 pb-12 px-5 space-y-6 z-10 text-center">
         
-        {/* Top Status Capsule */}
-        <header className="flex items-center justify-between pt-1">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-rose-100/90 border border-rose-200/90 shadow-xs">
+        {/* Top Header Bar */}
+        <header className="flex items-center justify-between">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-rose-100/90 border border-rose-200 text-rose-800 text-[11px] font-bold tracking-wide">
             <span className="w-2 h-2 rounded-full bg-rose-500 animate-ping"></span>
-            <span className="text-[11px] font-bold text-rose-800 tracking-wide">
-              Spesial Dari Malik • 13 - 10 - 2006
-            </span>
+            <span>13 • 10 • 2006</span>
           </div>
 
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/90 border border-rose-200 text-rose-600 text-[11px] font-bold shadow-xs">
-            <Crown className="w-3.5 h-3.5 text-amber-500" />
-            <span>Sweet 20th</span>
-          </div>
+          {/* Music Box Toggle Button */}
+          <button
+            onClick={handleToggleMusic}
+            className={`flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border transition-all cursor-pointer ${
+              isPlayingMusic
+                ? 'bg-rose-500 text-white border-rose-500 shadow-sm'
+                : 'bg-white/90 text-rose-700 border-rose-200 hover:bg-rose-50'
+            }`}
+            title={isPlayingMusic ? 'Jeda Musik' : 'Putar Musik Box'}
+          >
+            {isPlayingMusic ? (
+              <>
+                <Volume2 className="w-3.5 h-3.5 animate-pulse" />
+                <span>Musik Aktif</span>
+              </>
+            ) : (
+              <>
+                <VolumeX className="w-3.5 h-3.5" />
+                <span>Putar Musik</span>
+              </>
+            )}
+          </button>
         </header>
 
-        {/* Hero Section */}
-        <section className="text-center space-y-3 pt-2">
-          {/* Pearl Avatar Emblem */}
+        {/* Title & Pearl Avatar Header */}
+        <section className="space-y-3 pt-1">
           <div className="relative inline-block mx-auto">
-            <div className="w-24 h-24 rounded-full bg-gradient-to-tr from-rose-400 via-pink-300 to-amber-200 p-1 shadow-xl shadow-rose-300/50 animate-pearl-pulse">
-              <div className="w-full h-full rounded-full bg-white flex flex-col items-center justify-center border-2 border-white shadow-inner">
-                <span className="text-2xl font-serif-title font-extrabold text-rose-600 tracking-tight">
+            <div className="w-20 h-20 rounded-full bg-gradient-to-tr from-rose-400 via-pink-300 to-amber-200 p-1 shadow-lg shadow-rose-300/40 animate-pearl-pulse">
+              <div className="w-full h-full rounded-full bg-white flex flex-col items-center justify-center border-2 border-white">
+                <span className="text-xl font-serif-title font-extrabold text-rose-600 tracking-tight">
                   MMQ
                 </span>
-                <span className="text-[9px] font-bold tracking-widest text-slate-400 uppercase mt-0.5">
+                <span className="text-[8px] font-bold tracking-widest text-slate-400 uppercase">
                   Mutiara
                 </span>
               </div>
             </div>
-            {/* Sparkle badge */}
-            <div className="absolute -bottom-1 -right-1 w-8 h-8 rounded-full bg-gradient-to-br from-amber-400 to-rose-500 text-white flex items-center justify-center border-2 border-white shadow-md">
-              <Sparkles className="w-4 h-4 text-amber-100" />
+            <div className="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-rose-500 text-white flex items-center justify-center border-2 border-white shadow-sm">
+              <Crown className="w-3.5 h-3.5 text-amber-200" />
             </div>
           </div>
 
-          {/* Titles */}
           <div className="space-y-1">
-            <span className="text-xs font-bold uppercase tracking-widest text-rose-500">
+            <span className="text-[11px] font-bold uppercase tracking-widest text-rose-500">
               Selamat Ulang Tahun Ke-20
             </span>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-serif-title tracking-tight leading-tight">
               Meta Mutiara Qolbi <span className="shimmer-text">✨</span>
             </h1>
-            <p className="text-xs sm:text-sm text-slate-600 max-w-xs mx-auto leading-relaxed pt-1">
-              Sebuah persembahan dan untaian doa tulus dari <strong className="text-rose-700">Malik</strong> untuk sang mutiara hati di hari paling bahagianya. 🌸
+          </div>
+        </section>
+
+        {/* Interactive Birthday Cake Animation */}
+        <section className="p-5 rounded-3xl bg-white border border-rose-200/80 shadow-md">
+          <BirthdayCake onCandleBlown={handleCandleBlown} />
+        </section>
+
+        {/* Paragraf Ucapan & Doa Tulus Dari Malik */}
+        <section className="p-6 rounded-3xl bg-white border border-rose-200/80 shadow-md text-left space-y-4 relative">
+          <div className="flex items-center justify-between border-b border-rose-100 pb-3">
+            <div className="flex items-center gap-2">
+              <Heart className="w-4 h-4 text-rose-500 fill-rose-500" />
+              <h2 className="text-sm font-bold text-slate-800 font-serif-title">
+                Ucapan & Doa Dari Malik
+              </h2>
+            </div>
+            <span className="text-[10px] font-semibold text-rose-600 bg-rose-50 px-2.5 py-0.5 rounded-full border border-rose-100">
+              13 Oktober 2026
+            </span>
+          </div>
+
+          <div className="space-y-3.5 text-xs sm:text-sm text-slate-700 leading-relaxed font-sans">
+            <p>
+              <span className="font-handwriting text-2xl text-rose-600 font-bold mr-1">Halo Meta,</span>
+              selamat ulang tahun yang ke-20 ya.
+            </p>
+
+            <p>
+              Tepat di tanggal <strong className="text-rose-800">13 Oktober 2006</strong>, dua puluh tahun yang lalu, kamu hadir ke dunia ini membawa nama yang begitu indah: <em>Meta Mutiara Qolbi</em>. Dan bagiku, kamu benar-benar cerminan dari namamu — sebuah mutiara hati yang berharga, berhati tulus, dan selalu membawa ketenangan bagi siapa pun yang ada di dekatmu.
+            </p>
+
+            <p>
+              Terima kasih sudah bertahan, bertumbuh, dan menjadi sosok perempuan yang sekuat dan sebaik sekarang. Aku tahu perjalanan hidup dan setiap proses menuju usia 20 tidak selalu mudah, tapi kamu selalu mampu melewatinya dengan senyuman dan ketabahanmu yang luar biasa. Aku sangat bangga padamu, Meta.
+            </p>
+
+            <div className="p-3.5 rounded-2xl bg-rose-50 border border-rose-200/80 italic text-rose-900 font-serif-title text-xs leading-relaxed">
+              "Di usiamu yang genap 20 tahun ini, doaku untukmu selalu tulus: semoga Allah senantiasa melimpahkan kesehatan untukmu, melapangkan jalanmu dalam meraih setiap impian dan cita-cita, menjauhkanmu dari segala kesedihan, serta selalu memeluk hatimu dengan kedamaian dan kebahagiaan yang melimpah."
+            </div>
+
+            <p>
+              Semoga senyuman manismu tidak pernah pudar oleh apa pun, dan semoga setiap langkahmu ke depan selalu dipenuhi berkah, kemudahan, dan perlindungan dari Tuhan.
+            </p>
+
+            <p className="font-medium text-slate-800 pt-1">
+              Selamat ulang tahun ke-20, Meta Mutiara Qolbi. Tetaplah bersinar dengan caramu sendiri.
             </p>
           </div>
-        </section>
 
-        {/* Interactive Virtual Birthday Cake */}
-        <section className="p-4 sm:p-5 rounded-3xl bg-gradient-to-b from-white via-rose-50/50 to-white border border-rose-200/80 shadow-sm text-center">
-          <BirthdayCake 
-            onCandleBlown={() => triggerSnackbar('Lilin ditiup! Semoga semua doa Malik untuk Meta dikabulkan ✨')} 
-          />
-        </section>
-
-        {/* Heartfelt Openable Envelope Letter From Malik */}
-        <section className="w-full">
-          <SuratAmplop />
-        </section>
-
-        {/* Milestone 20 Years Journey & Name Philosophy */}
-        <section className="w-full">
-          <MilestoneJourney />
-        </section>
-
-        {/* Secret Cards Reveal From Malik */}
-        <section className="w-full">
-          <SecretCards />
-        </section>
-
-        {/* Exclusive Prayers From Malik */}
-        <section className="w-full">
-          <WishJar />
-        </section>
-
-        {/* Love Shower Interactive Footer Card From Malik */}
-        <section className="p-4 rounded-3xl bg-gradient-to-r from-rose-500 via-pink-500 to-rose-600 text-white text-center shadow-lg shadow-rose-300/50 space-y-3">
-          <div className="w-10 h-10 mx-auto rounded-2xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
-            <Heart className="w-5 h-5 text-white fill-white animate-pulse" />
+          {/* Tanda Tangan Malik */}
+          <div className="pt-4 border-t border-rose-100 flex items-center justify-between">
+            <span className="text-[11px] text-slate-400 font-medium">
+              Dengan segenap doa tulus,
+            </span>
+            <span className="font-handwriting text-2xl font-bold text-rose-700">
+              — Malik 💖
+            </span>
           </div>
-          <div>
-            <h3 className="text-sm font-bold font-serif-title">
-              Detak Doa & Rasa Sayang Dari Malik 💖
-            </h3>
-            <p className="text-xs text-rose-100 mt-0.5">
-              Sudah ada <strong className="text-white underline">{loveCount}</strong> tanda cinta & doa tulus yang dikirim Malik untuk Meta hari ini!
-            </p>
-          </div>
-          <button
-            onClick={handleSendLove}
-            className="w-full py-2.5 px-4 rounded-2xl bg-white text-rose-600 font-bold text-xs shadow-md hover:bg-rose-50 active:scale-95 transition-all cursor-pointer flex items-center justify-center gap-1.5"
-          >
-            <Heart className="w-4 h-4 fill-rose-600 text-rose-600" />
-            <span>Kirim Pelukan & Doa Dari Malik (+1 Cinta)</span>
-          </button>
         </section>
 
-        {/* Closing Footnote */}
-        <footer className="text-center pt-2 pb-6 space-y-1">
+        {/* Footer Sederhana & Elegan */}
+        <footer className="pt-2 text-center space-y-1">
           <p className="text-[11px] text-slate-400 font-medium">
-            Dibuat dengan segenap cinta & doa khusus dari
+            Spesial dari Malik untuk Meta Mutiara Qolbi
           </p>
-          <p className="text-xs font-bold text-rose-800 font-serif-title">
-            Malik untuk Meta Mutiara Qolbi • 13 Oktober 2006
-          </p>
-          <p className="text-[10px] text-slate-400">
-            Semoga harimu selalu bersinar dan penuh kebahagiaan ✨
+          <p className="text-[10px] text-rose-400 font-semibold tracking-wider uppercase">
+            13 • 10 • 2006 — 13 • 10 • 2026
           </p>
         </footer>
 
       </main>
-
-      {/* Floating Bottom Action Bar */}
-      <FloatingControls
-        onShareNotice={() => triggerSnackbar('Tautan ucapan berhasil disalin! Kirimkan ke Meta 💌')}
-      />
 
     </div>
   );

@@ -183,21 +183,6 @@ export default function BirthdayCake({ onCandleBlown }) {
           {!isBlown ? 'Ketuk tombol atau lilin untuk meniup harapan ✨' : '✨ Lilin telah ditiup, doamu berlayar ke langit! ✨'}
         </p>
       </div>
-
-      {/* Wish Pop-up Alert when Blown */}
-      {wishRevealed && (
-        <div className="mt-4 p-4 rounded-2xl bg-gradient-to-br from-pink-50 via-rose-50 to-white border border-rose-200/80 shadow-md max-w-sm text-center animate-fadeIn transition-all">
-          <div className="w-8 h-8 mx-auto mb-2 rounded-full bg-rose-500 text-white flex items-center justify-center shadow-sm">
-            <Sparkles className="w-4 h-4" />
-          </div>
-          <h4 className="text-sm font-bold text-rose-900 font-serif-title">
-            Make A Wish Come True! 🌟
-          </h4>
-          <p className="text-xs text-slate-600 mt-1 leading-relaxed">
-            Selamat bertambah usia yang ke-20, <strong className="text-rose-700">Meta Mutiara Qolbi</strong>! Semoga setiap cita-cita, langkah masa depan, dan harapan terbaikmu senantiasa dimudahkan dan dikabulkan.
-          </p>
-        </div>
-      )}
     </div>
   );
 }
